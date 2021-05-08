@@ -10,13 +10,16 @@ import javax.swing.SwingConstants;
 
 public class Calculator implements ActionListener {
 
+	boolean isOperatorClicked=false;
+	
+	String oldvalue;
 	JFrame jf;
 	JLabel displayLabel;
 	JButton sevenButton,eightButton,nineButton;
 	JButton fourButton,fiveButton,sixButton;
 	JButton oneButton,twoButton,threeButton,zeroButton;
 	JButton dotButton, equalButton,plusButton,minusButton;
-	JButton mulButton,divButton;
+	JButton mulButton,divButton,clearButton,deleteButton;
 	public Calculator() {
 		
 		jf=new JFrame("Calculator");
@@ -24,7 +27,7 @@ public class Calculator implements ActionListener {
 		jf.setSize(600, 600);
 		jf.setLocation(500, 100);
 		
-		displayLabel=new JLabel("Hello");
+		displayLabel=new JLabel();
 		displayLabel.setBounds(30, 50, 540, 40);
 		displayLabel.setBackground(Color.GRAY);
 		displayLabel.setOpaque(true);
@@ -128,6 +131,20 @@ public class Calculator implements ActionListener {
 		jf.add(plusButton);
 		plusButton.addActionListener(this);
 		
+		clearButton=new JButton("C");
+		clearButton.setBounds(430, 430, 80, 80);
+		clearButton.setFont(new Font("Arial", Font.PLAIN,40));
+		jf.add(clearButton);
+		clearButton.addActionListener(this);
+		
+		deleteButton=new JButton("<–");
+		deleteButton.setBounds(430, 330, 80, 80);
+		deleteButton.setFont(new Font("Arial", Font.PLAIN,40));
+		jf.add(deleteButton);
+		deleteButton.addActionListener(this);
+		
+		
+		
 		jf.setVisible(true);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -148,52 +165,74 @@ public class Calculator implements ActionListener {
 		
 		if(e.getSource()== sevenButton) {
 			
-			displayLabel.setText("7");
+			if(isOperatorClicked==true) {
+				displayLabel.setText("7");
+				isOperatorClicked=false;
+			}else {
+				String labelText=displayLabel.getText();
+				displayLabel.setText(labelText+"7");
+			}
 			
 		}else if(e.getSource()== eightButton) {
-			displayLabel.setText("8");
+			
+			if(isOperatorClicked==true) {
+				displayLabel.setText("8");
+				isOperatorClicked=false;
+			}else {
+				displayLabel.setText(displayLabel.getText()+"8");
+			}
+			
+			
 		
 		}else if (e.getSource()== nineButton) {
 			
-			displayLabel.setText("9");
+			String labelText=displayLabel.getText();
+			displayLabel.setText(labelText+"9");
 			
 		}else if(e.getSource()== fourButton) {
 			
-			displayLabel.setText("4");
+			displayLabel.setText(displayLabel.getText()+"4");
 		
 		}else if(e.getSource()== fiveButton) {
 			
-			displayLabel.setText("5");
+			String labelText=displayLabel.getText();
+			displayLabel.setText(labelText+"5");
 		
 		}else if(e.getSource()== sixButton) {
 			
-			displayLabel.setText("6");
+			displayLabel.setText(displayLabel.getText()+"6");
 		
 		}else if(e.getSource()== oneButton) {
 			
-			displayLabel.setText("1");
+			String labelText=displayLabel.getText();
+			displayLabel.setText(labelText+"1");
 		
 		}else if(e.getSource()== twoButton) {
 			
-			displayLabel.setText("2");
+			displayLabel.setText(displayLabel.getText()+"2");
 		
 		}else if(e.getSource()== threeButton) {
-				
-			displayLabel.setText("3");
+			
+			String labelText=displayLabel.getText();
+			displayLabel.setText(labelText+"3");
 		
 		}else if(e.getSource()== zeroButton) {
-				
-			displayLabel.setText("0");
+			
+			displayLabel.setText(displayLabel.getText()+"0");
 		
 		}else if(e.getSource()== dotButton) {
-				
-				displayLabel.setText(".");
+			
+			
+			String labelText=displayLabel.getText();
+			displayLabel.setText(labelText+".");
 	    
 		}else if(e.getSource()== equalButton) {
 			
 			
 	    }else if(e.getSource()== plusButton) {
 			
+	    	isOperatorClicked=true;
+	    	oldValue=displayLabel.getText();
 			
 	    }else if(e.getSource()== mulButton) {
 			
@@ -204,6 +243,10 @@ public class Calculator implements ActionListener {
 	    }else if(e.getSource()== minusButton) {
 			
 			
-	    }			
+	    }else if(e.getSource()== clearButton) {
+			
+	    	displayLabel.setText("");
+			
+	    }				
     }
 }
