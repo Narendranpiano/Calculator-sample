@@ -10,7 +10,7 @@ import javax.swing.SwingConstants;
 
 public class Calculator implements ActionListener {
 
-	boolean isOperatorClicked=false;
+	boolean isOperatorClicked=false, isEqualClicked=false;
 	
 	String oldValue1,newValue1,oldValue2,newValue2,oldValue3,newValue3,oldValue4,newValue4;
 	JFrame jf;
@@ -152,6 +152,8 @@ public class Calculator implements ActionListener {
 		
 	}
 	
+	
+	
 	public static void main(String[] args) {
 		Calculator c=new Calculator();
 		new Calculator();
@@ -272,33 +274,32 @@ public class Calculator implements ActionListener {
 		}else if(e.getSource()== equalButton) {
 			
 			String newValue1=displayLabel.getText();
-			
 			float oldValueF=Float.parseFloat(oldValue1);
 			float newValueF=Float.parseFloat(newValue1);
-			float resultplus=oldValueF+newValueF;
-			String displayNew=displayNew.get
-			displayLabel.setText(resultplus+"");
+			float resultPlus=oldValueF+newValueF;
+			displayLabel.setText(resultPlus+"");
+			isEqualClicked=false;
 			
 			String newValue2=displayLabel.getText();
-			
 			float oldValueG=Float.parseFloat(oldValue2);
 			float newValueG=Float.parseFloat(newValue2);
-			float resultmul=oldValueG*newValueG;
-			displayLabel.setText(resultmul+"");
+			float resultMul=oldValueG*newValueG;
+			displayLabel.setText(resultMul+"");
+			isEqualClicked=false;
 			
 			String newValue3=displayLabel.getText();
-			
 			float oldValueH=Float.parseFloat(oldValue3);
 			float newValueH=Float.parseFloat(newValue3);
-			float resultdiv=oldValueH/newValueH;
-			displayLabel.setText(resultdiv+"");
+			float resultDiv=oldValueH/newValueH;
+			displayLabel.setText(resultDiv+"");
+			isEqualClicked=false;
 			
 			String newValue4=displayLabel.getText();
-			
 			float oldValueI=Float.parseFloat(oldValue4);
 			float newValueI=Float.parseFloat(newValue4);
-			float resultminus=oldValueI-newValueI;
-			displayLabel.setText(resultminus+"");
+			float resultMinus=oldValueI-newValueI;
+			displayLabel.setText(resultMinus+"");
+			isEqualClicked=false;
 			
 			
 	    }else if(e.getSource()== plusButton) {
