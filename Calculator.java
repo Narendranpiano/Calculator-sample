@@ -12,7 +12,7 @@ public class Calculator implements ActionListener {
 
 	boolean isOperatorClicked=false;
 	
-	String oldvalue;
+	String oldValue1,newValue1,oldValue2,newValue2,oldValue3,newValue3,oldValue4,newValue4;
 	JFrame jf;
 	JLabel displayLabel;
 	JButton sevenButton,eightButton,nineButton;
@@ -119,7 +119,7 @@ public class Calculator implements ActionListener {
 		jf.add(mulButton);
 		mulButton.addActionListener(this);
 		
-		minusButton=new JButton("-");
+		minusButton=new JButton("–");
 		minusButton.setBounds(330, 330, 80, 80);
 		minusButton.setFont(new Font("Arial", Font.PLAIN,40));
 		jf.add(minusButton);
@@ -137,7 +137,7 @@ public class Calculator implements ActionListener {
 		jf.add(clearButton);
 		clearButton.addActionListener(this);
 		
-		deleteButton=new JButton("<–");
+		deleteButton=new JButton("<");
 		deleteButton.setBounds(430, 330, 80, 80);
 		deleteButton.setFont(new Font("Arial", Font.PLAIN,40));
 		jf.add(deleteButton);
@@ -186,39 +186,82 @@ public class Calculator implements ActionListener {
 		
 		}else if (e.getSource()== nineButton) {
 			
-			String labelText=displayLabel.getText();
-			displayLabel.setText(labelText+"9");
+			if(isOperatorClicked==true) {
+				displayLabel.setText("9");
+				isOperatorClicked=false;
+			}else {
+				String labelText=displayLabel.getText();
+				displayLabel.setText(labelText+"9");
+			
+			}
 			
 		}else if(e.getSource()== fourButton) {
 			
-			displayLabel.setText(displayLabel.getText()+"4");
+			if(isOperatorClicked==true) {
+				displayLabel.setText("4");
+				isOperatorClicked=false;
+			}else {
+				displayLabel.setText(displayLabel.getText()+"4");
+			}
 		
 		}else if(e.getSource()== fiveButton) {
 			
-			String labelText=displayLabel.getText();
-			displayLabel.setText(labelText+"5");
+			if(isOperatorClicked==true) {
+				displayLabel.setText("5");
+				isOperatorClicked=false;
+			}else {
+				String labelText=displayLabel.getText();
+				displayLabel.setText(labelText+"5");
+			
+			}
 		
 		}else if(e.getSource()== sixButton) {
 			
-			displayLabel.setText(displayLabel.getText()+"6");
+			if(isOperatorClicked==true) {
+				displayLabel.setText("6");
+				isOperatorClicked=false;
+			}else {
+				displayLabel.setText(displayLabel.getText()+"6");
+			}
 		
 		}else if(e.getSource()== oneButton) {
 			
-			String labelText=displayLabel.getText();
-			displayLabel.setText(labelText+"1");
-		
+			if(isOperatorClicked==true) {
+				displayLabel.setText("1");
+				isOperatorClicked=false;
+			}else {
+				String labelText=displayLabel.getText();
+				displayLabel.setText(labelText+"1");
+			
+			}
 		}else if(e.getSource()== twoButton) {
 			
-			displayLabel.setText(displayLabel.getText()+"2");
+			if(isOperatorClicked==true) {
+				displayLabel.setText("2");
+				isOperatorClicked=false;
+			}else {
+				displayLabel.setText(displayLabel.getText()+"2");
+			}
+		
 		
 		}else if(e.getSource()== threeButton) {
 			
-			String labelText=displayLabel.getText();
-			displayLabel.setText(labelText+"3");
-		
+			if(isOperatorClicked==true) {
+				displayLabel.setText("3");
+				isOperatorClicked=false;
+			}else {
+				String labelText=displayLabel.getText();
+				displayLabel.setText(labelText+"3");
+			
+			}
 		}else if(e.getSource()== zeroButton) {
 			
-			displayLabel.setText(displayLabel.getText()+"0");
+			if(isOperatorClicked==true) {
+				displayLabel.setText("0");
+				isOperatorClicked=false;
+			}else {
+				displayLabel.setText(displayLabel.getText()+"0");
+			}
 		
 		}else if(e.getSource()== dotButton) {
 			
@@ -228,20 +271,52 @@ public class Calculator implements ActionListener {
 	    
 		}else if(e.getSource()== equalButton) {
 			
+			String newValue1=displayLabel.getText();
+			
+			float oldValueF=Float.parseFloat(oldValue1);
+			float newValueF=Float.parseFloat(newValue1);
+			float resultplus=oldValueF+newValueF;
+			String displayNew=displayNew.get
+			displayLabel.setText(resultplus+"");
+			
+			String newValue2=displayLabel.getText();
+			
+			float oldValueG=Float.parseFloat(oldValue2);
+			float newValueG=Float.parseFloat(newValue2);
+			float resultmul=oldValueG*newValueG;
+			displayLabel.setText(resultmul+"");
+			
+			String newValue3=displayLabel.getText();
+			
+			float oldValueH=Float.parseFloat(oldValue3);
+			float newValueH=Float.parseFloat(newValue3);
+			float resultdiv=oldValueH/newValueH;
+			displayLabel.setText(resultdiv+"");
+			
+			String newValue4=displayLabel.getText();
+			
+			float oldValueI=Float.parseFloat(oldValue4);
+			float newValueI=Float.parseFloat(newValue4);
+			float resultminus=oldValueI-newValueI;
+			displayLabel.setText(resultminus+"");
+			
 			
 	    }else if(e.getSource()== plusButton) {
 			
 	    	isOperatorClicked=true;
-	    	oldValue=displayLabel.getText();
+	    	oldValue1=displayLabel.getText();
 			
 	    }else if(e.getSource()== mulButton) {
-			
+	    	isOperatorClicked=true;
+	    	oldValue2=displayLabel.getText();
 			
 	    }else if(e.getSource()== divButton) {
-			
+	    	isOperatorClicked=true;
+	    	oldValue3=displayLabel.getText();
 			
 	    }else if(e.getSource()== minusButton) {
-			
+	    	isOperatorClicked=true;
+	    	oldValue4=displayLabel.getText();
 			
 	    }else if(e.getSource()== clearButton) {
 			
